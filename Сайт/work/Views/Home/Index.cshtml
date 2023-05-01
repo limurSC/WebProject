@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Главная";
+}
+
+<header>
+    <img src="~/favicon.ico">
+    <span class="logo">Myfolio</span>
+    <nav>
+        <img src="~/hand.ico">
+        <a href="/ДобавитьСсылку">Главная</a>
+        <img src="~/hand.ico">
+        <a href="/ДобавитьСсылку">Добавить проект</a>
+        <button class="searchButton">Поиск...</button>
+        <form action="/Login">
+            <button class="loginButton">Вход</button>
+        </form>
+        <form action="/Registration">
+            <button class="signupButton">Регистрация</button>
+        </form>
+    </nav>
+</header>
+
+<div class="homePage">
+    <h1 class="homeText">Цифровые истории вашего<br> успешного будущего</h1>
+    <div id="images">
+
+        <div class="about">
+            <img src="~/picture.jpg">
+            Для фотографов
+        </div>
+
+        <div class="about">
+            <img src="~/picture.jpg">
+            Для дизайнеров
+        </div>
+
+        <div class="about">
+            <img src="~/picture.jpg">
+            Для художников
+        </div>
+
+    </div>
+</div>

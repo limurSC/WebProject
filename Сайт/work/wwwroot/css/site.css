@@ -1,0 +1,115 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+
+body {
+  margin-bottom: 60px;
+  color: blueviolet;
+}
+
+header {
+    margin-top: 25px;
+    margin-left: 400px;
+    display: flex;
+    flex-direction: row;
+}
+
+header span {
+    color: blueviolet;
+    font: red serifs;
+    font-size: 20px;
+    margin-right: 40px;
+}
+
+header nav a {
+    margin-right: 40px;
+    color: black;
+    text-decoration: none;
+}
+
+header nav a:hover{text-decoration: underline}
+
+.searchButton {
+    border-radius: 20px;
+    width: 220px;
+    height: 35px;
+    text-align: left;
+    color: lightgray;
+    background-color: white;
+    border-color: lightgray;
+}
+
+.loginButton {
+    margin-left: 180px;
+    border-radius: 12px;
+    width: 60px;
+    color: blueviolet;
+    background-color: white;
+    border-color: blueviolet;
+}
+
+.signupButton {
+    border-radius: 12px;
+    width: 120px;
+    color: white;
+    background-color: blueviolet;
+}
+
+.homePage {
+    margin-top: 50px;
+    align-self: center;
+}
+
+.homeText{
+    font-size: 60px;
+    margin-bottom: 50px;
+    text-align:left;
+    margin-left: 550px;
+}
+
+.about {
+    display: inline-block;
+    text-align:center;
+    font-size: 30px;
+    color: black;
+    font-weight: 500;
+}
+
+.about img {
+    width: 300px;
+    height: 500px;
+    display: block;
+    margin-right: 25px;
+    margin-left: 25px;
+    border-radius: 50px;
+}
+
+header nav form{
+    display:inline-block;
+}
+
+#images{
+    margin-left: 410px;
+}
+
+main label {
+    display: block;
+    margin-top: 15px;
+}
+
+main input{
+    display: block;
+    margin-top: 15px;
+}
