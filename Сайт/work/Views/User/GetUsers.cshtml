@@ -1,0 +1,14 @@
+﻿@model IEnumerable<DigitalPortfolio.Domain.Entity.User>
+
+@{
+	ViewBag.Title = "название";
+}
+
+@foreach(var user in Model)
+{
+	<p>@user.Id</p>
+	<p>@user.Name</p>
+	<p>@user.Surname</p>
+	<p>@user.Email</p>
+}
+

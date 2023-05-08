@@ -1,7 +1,7 @@
 ﻿@{
     ViewData["Title"] = "Главная";
+    Layout = "_Layout";
 }
-
 <header>
     <img src="~/favicon.ico">
     <span class="logo">Myfolio</span>
@@ -11,12 +11,22 @@
         <img src="~/hand.ico">
         <a href="/ДобавитьСсылку">Добавить проект</a>
         <button class="searchButton">Поиск...</button>
-        <form action="/Login">
-            <button class="loginButton">Вход</button>
-        </form>
-        <form action="/Registration">
-            <button class="signupButton">Регистрация</button>
-        </form>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <form action="/Account/Login">
+                <button class="loginButton">Вход</button>
+            </form>
+            <form action="/Account/Register">
+                <button class="signupButton">Регистрация</button>
+            </form>
+        }
+        else
+        {
+            <p class="fakeClass">@User.Identity.Name</p>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <input class="fakeClass" type="submit" value="Выход" />
+            </form>
+        }
     </nav>
 </header>
 

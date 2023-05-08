@@ -1,0 +1,54 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33414.496
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DigitalPortfolio", "work\DigitalPortfolio.csproj", "{7FDFB092-A788-4D53-92E9-B1081EB73114}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DAL", "DAL", "{56472F4F-D0E8-4125-B62E-257AC5F5744C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalPortfolio.Dal", "DigitalPortfolio.Dal\DigitalPortfolio.Dal.csproj", "{85CD27E2-AC71-4169-8E90-EBA7D3953408}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Domain", "Domain", "{CFDECE6B-ADC7-432D-BB5A-E1FB85BFE6B2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalPortfolio.Domain", "DigitalPortfolio.Domain\DigitalPortfolio.Domain.csproj", "{DC08C6E1-21B3-4742-B835-E1E4118599A8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{2C42F3A2-4F1D-4E27-A5B5-DB37DA09020C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DigitalPortfolio.Service", "DigitalPortfolio.Service\DigitalPortfolio.Service.csproj", "{8F743586-50DA-4B2E-B8C4-56C1184E8BBD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FDFB092-A788-4D53-92E9-B1081EB73114}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDFB092-A788-4D53-92E9-B1081EB73114}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDFB092-A788-4D53-92E9-B1081EB73114}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDFB092-A788-4D53-92E9-B1081EB73114}.Release|Any CPU.Build.0 = Release|Any CPU
+		{85CD27E2-AC71-4169-8E90-EBA7D3953408}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{85CD27E2-AC71-4169-8E90-EBA7D3953408}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{85CD27E2-AC71-4169-8E90-EBA7D3953408}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{85CD27E2-AC71-4169-8E90-EBA7D3953408}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC08C6E1-21B3-4742-B835-E1E4118599A8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC08C6E1-21B3-4742-B835-E1E4118599A8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC08C6E1-21B3-4742-B835-E1E4118599A8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC08C6E1-21B3-4742-B835-E1E4118599A8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F743586-50DA-4B2E-B8C4-56C1184E8BBD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F743586-50DA-4B2E-B8C4-56C1184E8BBD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F743586-50DA-4B2E-B8C4-56C1184E8BBD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F743586-50DA-4B2E-B8C4-56C1184E8BBD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{85CD27E2-AC71-4169-8E90-EBA7D3953408} = {56472F4F-D0E8-4125-B62E-257AC5F5744C}
+		{DC08C6E1-21B3-4742-B835-E1E4118599A8} = {CFDECE6B-ADC7-432D-BB5A-E1FB85BFE6B2}
+		{8F743586-50DA-4B2E-B8C4-56C1184E8BBD} = {2C42F3A2-4F1D-4E27-A5B5-DB37DA09020C}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E0E6F5EA-42A1-4FE3-97D1-4BE79D55E356}
+	EndGlobalSection
+EndGlobal

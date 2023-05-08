@@ -41,6 +41,10 @@ header nav a {
 
 header nav a:hover{text-decoration: underline}
 
+.fakeClass {
+    display: inline-block;
+}
+
 .searchButton {
     border-radius: 20px;
     width: 220px;
