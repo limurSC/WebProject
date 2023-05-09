@@ -1,18 +1,20 @@
 ﻿@model DigitalPortfolio.Domain.ViewModel.User.LoginViewModel
 
 @{
-	ViewBag.Title = "Вход в аккаунт";
+    ViewBag.Title = "Вход в аккаунт";
 }
 
-<div>
-    <form asp-controller="Account" asp-action="Login">
-        <div asp-validation-summary="All"></div>
-        <div>
-            <input asp-for="Email" placeholder="Почта" type="text" />
-        </div>
-        <div>
-            <input autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
-        </div>
-        <button type="submit">Войти</button>
-    </form>
-</div>
+<body class="LoginImage">
+    <div>
+        <form asp-controller="Account" asp-action="Login">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <input asp-for="Email" placeholder="Почта" type="text" />
+            </div>
+            <div>
+                <input autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
+            </div>
+            <button type="submit">Войти</button>
+        </form>
+    </div>
+</body>

@@ -3,12 +3,9 @@
     Layout = "_Layout";
 }
 <header>
-    <img src="~/favicon.ico">
-    <span class="logo">Myfolio</span>
+    <img src="~/logo1.png" style="margin-top: 6px">
     <nav>
-        <img src="~/hand.ico">
-        <a href="/ДобавитьСсылку">Главная</a>
-        <img src="~/hand.ico">
+        <a href="/" style="margin-left: 40px">Главная</a>
         <a href="/ДобавитьСсылку">Добавить проект</a>
         <button class="searchButton">Поиск...</button>
         @if (!User.Identity.IsAuthenticated)
@@ -22,9 +19,9 @@
         }
         else
         {
-            <p class="fakeClass">@User.Identity.Name</p>
+            <a href="/ДобавитьСсылку" style="margin-left: 200px">Мой профиль</a>
             <form method="post" asp-controller="Account" asp-action="Logout">
-                <input class="fakeClass" type="submit" value="Выход" />
+                <input class="fakeClass signupButton" type="submit" value="Выход" />
             </form>
         }
     </nav>
@@ -35,17 +32,17 @@
     <div id="images">
 
         <div class="about">
-            <img src="~/picture.jpg">
+            <img src="~/homePicture1.jpg">
             Для фотографов
         </div>
 
         <div class="about">
-            <img src="~/picture.jpg">
+            <img src="~/homePicture2.jpg">
             Для дизайнеров
         </div>
 
         <div class="about">
-            <img src="~/picture.jpg">
+            <img src="~/homePicture3.jpg">
             Для художников
         </div>
 

@@ -1,0 +1,11 @@
+﻿.RegisterImage {
+    background-image: url("../RegisterBackground.jpg");
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+.LoginImage {
+    background-image: url("../LoginBackground.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+}

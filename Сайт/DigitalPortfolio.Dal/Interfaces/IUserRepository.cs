@@ -8,6 +8,5 @@ namespace DigitalPortfolio.Dal.Interfaces
 {
     public interface IUserRepository<User> : IBaseRepository<User>
     {
-        int Count();
     }
 }

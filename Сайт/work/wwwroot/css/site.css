@@ -84,14 +84,17 @@ header nav a:hover{text-decoration: underline}
 }
 
 .about {
+    overflow: hidden;
     display: inline-block;
-    text-align:center;
+    text-align: center;
     font-size: 30px;
     color: black;
     font-weight: 500;
 }
 
 .about img {
+    object-fit: cover ;
+    border-style: solid;
     width: 300px;
     height: 500px;
     display: block;

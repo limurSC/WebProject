@@ -8,21 +8,17 @@ namespace DigitalPortfolio.Dal.Repositories
     {
         private readonly ApplicationDbContext _db;
 
-        private int count {  get; set; }
 
         public UserRepository(ApplicationDbContext db)
         {
             _db = db;
-            count = db.Users.Count();
         }
 
-        public int Count() => count;
 
         public async Task<bool> Add(User entity)
         {
             await _db.Users.AddAsync(entity);
             await _db.SaveChangesAsync();
-            count++;
             return true;
         }
 
@@ -30,7 +26,6 @@ namespace DigitalPortfolio.Dal.Repositories
         {
 			_db.Remove(entity);
 			await _db.SaveChangesAsync();
-            count--;
 			return true;
 		}
 

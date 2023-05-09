@@ -66,7 +66,6 @@ namespace DigitalPortfolio.Service.Implementations
 
                 user = new User
                 {
-                    Id = _userRepository.Count() + 1,
                     Email = model.Email,
                     Name = model.Name,
                     Surname = model.Surname,

@@ -4,24 +4,26 @@
     Layout = "_Layout";
 }
 
-<div>
-    <form asp-controller="Account" asp-action="Register">
-        <div asp-validation-summary="All"></div>
-        <div>
-            <input asp-for="Name" placeholder="Имя" type="text"/>
-        </div>
-        <div>
-            <input asp-for="Surname" placeholder="Фамилия" type="text" />
-        </div>
-        <div>
-            <input asp-for="Email" placeholder="Почта" type="text" />
-        </div>
-        <div>
-            <input autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
-        </div>
-        <div>
-            <input autocomplete="new-password" asp-for="PasswordConfirmation" placeholder="Подтверждение пароля" type="text" />
-        </div>
-        <button type="submit">Зарегестрироваться</button>
-    </form>
-</div>
+<body class="RegisterImage">
+    <div>
+        <form asp-controller="Account" asp-action="Register">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <input asp-for="Name" placeholder="Имя" type="text" />
+            </div>
+            <div>
+                <input asp-for="Surname" placeholder="Фамилия" type="text" />
+            </div>
+            <div>
+                <input asp-for="Email" placeholder="Почта" type="text" />
+            </div>
+            <div>
+                <input autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
+            </div>
+            <div>
+                <input autocomplete="new-password" asp-for="PasswordConfirmation" placeholder="Подтверждение пароля" type="text" />
+            </div>
+            <button type="submit">Зарегестрироваться</button>
+        </form>
+    </div>
+</body>
