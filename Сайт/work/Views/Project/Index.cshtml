@@ -1,0 +1,43 @@
+﻿@model DigitalPortfolio.Domain.Entity.User;
+
+<header>
+    <img src="~/logo1.png" style="margin-top: 6px">
+    <nav>
+        <a href="/" style="margin-left: 40px">Главная</a>
+        <a href="/Project/Add">Добавить проект</a>
+        <button class="searchButton">Поиск...</button>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <form action="/Account/Login">
+                <button class="loginButton">Вход</button>
+            </form>
+            <form action="/Account/Register">
+                <button class="signupButton">Регистрация</button>
+            </form>
+        }
+        else
+        {
+            <a href="/Account" style="margin-left: 200px">Мой профиль</a>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <input class="fakeClass signupButton" type="submit" value="Выход" />
+            </form>
+        }
+    </nav>
+</header>
+
+@{
+    var name = Model.Name + " " + Model.Surname;
+    <div>
+        <img src="~/avatars/@Model.Image" />
+        <label>@name</label>
+        <img src="~/projectAvatars/@Model.Project.Image" />
+        @{
+            var images = Directory.GetFiles("wwwroot" + "\\" + Model.Project.Images);
+            foreach (var image in images)
+            {
+                    <img width="100px" height="70px" src="~/@image.Substring(8)" />
+            }
+        }
+        <label>@Model.Project.Description</label>
+    </div>
+}

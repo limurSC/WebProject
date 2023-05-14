@@ -17,4 +17,9 @@
     <ProjectReference Include="..\DigitalPortfolio.Service\DigitalPortfolio.Service.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\avatars\" />
+    <Folder Include="wwwroot\projectAvatar\" />
+  </ItemGroup>
+
 </Project>

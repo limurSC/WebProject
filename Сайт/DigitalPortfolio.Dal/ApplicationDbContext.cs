@@ -1,22 +1,23 @@
 ﻿using DigitalPortfolio.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 
-namespace DigitalPortfolio.Dal
+namespace Automarket.DAL
 {
     public class ApplicationDbContext : DbContext
     {
-        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options) 
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
             Database.EnsureCreated();
         }
 
         public DbSet<User> Users { get; set; }
-
+        public DbSet<Project> Projects { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>(builder =>
             {
-                builder.Property(x => x.Id).ValueGeneratedOnAdd();
+                builder.Ignore("Secret");
+                builder.Ignore("Project");
             });
         }
     }

@@ -1,6 +1,61 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
-@{
-}
-<span>Amogus</span>
+﻿@model DigitalPortfolio.Domain.Entity.User;
+
+<header>
+    <img src="~/logo1.png" style="margin-top: 6px">
+    <nav>
+        <a href="/" style="margin-left: 40px">Главная</a>
+        <a href="/Project/Add">Добавить проект</a>
+        <button class="searchButton">Поиск...</button>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <form action="/Account/Login">
+                <button class="loginButton">Вход</button>
+            </form>
+            <form action="/Account/Register">
+                <button class="signupButton">Регистрация</button>
+            </form>
+        }
+        else
+        {
+            <a href="/Account" style="margin-left: 200px">Мой профиль</a>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <input class="fakeClass signupButton" type="submit" value="Выход" />
+            </form>
+        }
+    </nav>
+</header>
+<main>
+    <div>
+        <form enctype="multipart/form-data" asp-controller="Account" asp-action="Index">
+            <div>
+                <input asp-for="Id" value="@Model.Id" hidden="hidden" />
+            </div>
+            <div>
+                <input asp-for="Name" value="@Model.Name?.Trim()" placeholder="Имя" type="text" />
+            </div>
+            <div>
+                <input asp-for="Surname" value="@Model.Surname?.Trim()" placeholder="Фамилия" type="text" />
+            </div>
+            <div>
+                <input asp-for="Profession" value="@Model.Profession?.Trim()" placeholder="Профессия" type="text" />
+            </div>
+            <div>
+                <input asp-for="Country" value="@Model.Country?.Trim()" placeholder="Страна" type="text" />
+            </div>
+            <div>
+                <input asp-for="City" value="@Model.City?.Trim()" placeholder="Город" type="text" />
+            </div>
+            <div>
+                <input asp-for="Description" value="@Model.Description?.Trim()" placeholder="Описание" type="text" />
+            </div>
+            @if (Model.Image != null)
+            {
+                <img src="~/avatars/@Model.Image" class="rounded-circle" width="200px" height="200px" />
+            }
+            <div>
+                <input asp-for="Secret" type="file">
+            </div>
+            <button type="submit" style="margin-top:20px;">Сохранить</button>
+        </form>
+    </div>
+</main>

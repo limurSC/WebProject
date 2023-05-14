@@ -11,9 +11,11 @@ namespace DigitalPortfolio.Dal.Interfaces
 		Task<bool> Add(T entity);
 
         IQueryable<T> GetAll();
+        IEnumerable<T> Get();
 
-		Task<bool> Delete(T entity);
+        Task<bool> Delete(T entity);
 
         Task<T> Update(T entity);
+        public int Id();
     }
 }

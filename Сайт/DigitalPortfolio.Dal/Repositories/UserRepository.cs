@@ -1,4 +1,5 @@
-﻿using DigitalPortfolio.Dal.Interfaces;
+﻿using Automarket.DAL;
+using DigitalPortfolio.Dal.Interfaces;
 using DigitalPortfolio.Domain.Entity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,10 +9,14 @@ namespace DigitalPortfolio.Dal.Repositories
     {
         private readonly ApplicationDbContext _db;
 
+        private int id { set ; get; }
+
+        public int Id() => id;
 
         public UserRepository(ApplicationDbContext db)
         {
             _db = db;
+            id = db.Users.Count();
         }
 
 
@@ -19,6 +24,7 @@ namespace DigitalPortfolio.Dal.Repositories
         {
             await _db.Users.AddAsync(entity);
             await _db.SaveChangesAsync();
+            id++;
             return true;
         }
 
@@ -29,16 +35,6 @@ namespace DigitalPortfolio.Dal.Repositories
 			return true;
 		}
 
-        public async Task<User> Get(int id)
-        {
-            return await _db.Users.FirstOrDefaultAsync(u => u.Id == id);
-        }
-
-        public async Task<User> GetByNameAsync(string name)
-		{
-			return await _db.Users.FirstOrDefaultAsync(u => u.Name == name);
-		}
-
         public IQueryable<User> GetAll()
         {
             return _db.Users;
@@ -47,9 +43,31 @@ namespace DigitalPortfolio.Dal.Repositories
 		public async Task<User> Update(User entity)
 		{
             _db.Users.Update(entity);
-			await _db.SaveChangesAsync();
-
+            try
+            {
+                await _db.SaveChangesAsync();
+            }
+            catch(Exception ex) 
+            { var a = ex; }
             return entity;
 		}
-	}
+
+        public async Task<User> GetByEmail(string Email)
+        {
+            var a = await _db.Users.FirstOrDefaultAsync(u=>u.Email==Email);
+            return a;
+        }
+
+        public async Task<User> GetById(int id)
+        {
+            var a = _db.Users;
+             var b =  await a.FirstOrDefaultAsync(u => u.Id == id);
+            return b;
+        }
+
+        public IEnumerable<User> Get()
+        {
+            return _db.Users;
+        }
+    }
 }

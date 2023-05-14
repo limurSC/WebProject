@@ -1,4 +1,5 @@
-﻿@{
+﻿@model List<DigitalPortfolio.Domain.Entity.Project>
+@{
     ViewData["Title"] = "Главная";
     Layout = "_Layout";
 }
@@ -6,7 +7,7 @@
     <img src="~/logo1.png" style="margin-top: 6px">
     <nav>
         <a href="/" style="margin-left: 40px">Главная</a>
-        <a href="/ДобавитьСсылку">Добавить проект</a>
+        <a href="/Project/Add">Добавить проект</a>
         <button class="searchButton">Поиск...</button>
         @if (!User.Identity.IsAuthenticated)
         {
@@ -19,7 +20,7 @@
         }
         else
         {
-            <a href="/ДобавитьСсылку" style="margin-left: 200px">Мой профиль</a>
+            <a href="/Account" style="margin-left: 200px">Мой профиль</a>
             <form method="post" asp-controller="Account" asp-action="Logout">
                 <input class="fakeClass signupButton" type="submit" value="Выход" />
             </form>
@@ -27,24 +28,39 @@
     </nav>
 </header>
 
-<div class="homePage">
-    <h1 class="homeText">Цифровые истории вашего<br> успешного будущего</h1>
-    <div id="images">
+@if (!User.Identity.IsAuthenticated)
+{
+    <div class="homePage">
+        <h1 class="homeText">Цифровые истории вашего<br> успешного будущего</h1>
+        <div id="images">
 
-        <div class="about">
-            <img src="~/homePicture1.jpg">
-            Для фотографов
+            <div class="about">
+                <img src="~/homePicture1.jpg">
+                Для фотографов
+            </div>
+
+            <div class="about">
+                <img src="~/homePicture2.jpg">
+                Для дизайнеров
+            </div>
+
+            <div class="about">
+                <img src="~/homePicture3.jpg">
+                Для художников
+            </div>
+
         </div>
-
-        <div class="about">
-            <img src="~/homePicture2.jpg">
-            Для дизайнеров
-        </div>
-
-        <div class="about">
-            <img src="~/homePicture3.jpg">
-            Для художников
-        </div>
-
     </div>
-</div>
+}
+else if (Model.Count > 0)
+{
+    foreach (var project in Model)
+    {
+        <div class="projects">
+            <a asp-controller="Project" asp-action="Index" asp-route-projectId=@project.Id>
+                <img width="320px" height="180px" src="~/projectAvatars/@project.Image" />
+            </a>
+            <label style="text-align:center;">@project.Name</label>
+        </div>
+    }
+}

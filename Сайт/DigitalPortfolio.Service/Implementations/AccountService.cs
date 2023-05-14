@@ -1,11 +1,14 @@
 ﻿using DigitalPortfolio.Dal.Interfaces;
+using DigitalPortfolio.Dal.Repositories;
 using DigitalPortfolio.Domain.Entity;
+using DigitalPortfolio.Domain.Enum;
 using DigitalPortfolio.Domain.Helpers;
 using DigitalPortfolio.Domain.Response;
 using DigitalPortfolio.Domain.ViewModel.User;
 using DigitalPortfolio.Service.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using System.Net.Mime;
 using System.Security.Claims;
 
 namespace DigitalPortfolio.Service.Implementations
@@ -22,11 +25,49 @@ namespace DigitalPortfolio.Service.Implementations
             _logger = logger;
         }
 
+        public async Task<BaseResponse<User>> GetByEmail(string email)
+        {
+            try
+            {
+                var users = _userRepository.GetAll();
+                var a=    users.First(u => u.Email.Equals(email));
+                return new BaseResponse<User> { Data = a, StatusCode = Domain.Enum.StatusCode.OK};
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"[GetByEmail]: {e.Message}");
+                return new BaseResponse<User>
+                {
+                    Description = e.Message,
+                    StatusCode = Domain.Enum.StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<BaseResponse<User>> GetById(int id)
+        {
+            try
+            {
+                var users = _userRepository.GetAll();
+                var a = users.First(u => u.Id == id);
+                return new BaseResponse<User> { Data = a, StatusCode = Domain.Enum.StatusCode.OK };
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"[GetById]: {e.Message}");
+                return new BaseResponse<User>
+                {
+                    Description = e.Message,
+                    StatusCode = Domain.Enum.StatusCode.InternalServerError
+                };
+            }
+        }
+
         public async Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model)
         {
             try
             {
-                var user = await _userRepository.GetAll().FirstOrDefaultAsync(u => u.Email == model.Email);
+                var user = await _userRepository.GetByEmail(model.Email);
                 if (user == null)
                     return new BaseResponse<ClaimsIdentity> { Description = "Пользователь не зарегестрирован" };
 
@@ -39,7 +80,7 @@ namespace DigitalPortfolio.Service.Implementations
                 return new BaseResponse<ClaimsIdentity>
                 {
                     Data = result,
-                    StatusCode = Domain.Enum.StatusCode.Ok
+                    StatusCode = Domain.Enum.StatusCode.OK
                 };
             }
             catch (Exception e)
@@ -66,10 +107,10 @@ namespace DigitalPortfolio.Service.Implementations
 
                 user = new User
                 {
+                    Id = _userRepository.Id() + 1,
                     Email = model.Email,
                     Name = model.Name,
                     Surname = model.Surname,
-                    //Role = Domain.Enum.Role.User,
                     Password = HashPasswordHelper.HashPassword(model.Password)
                 };
 
@@ -80,13 +121,46 @@ namespace DigitalPortfolio.Service.Implementations
                 {
                     Data = result,
                     Description = "Пользователь зарегестрирован",
-                    StatusCode = Domain.Enum.StatusCode.Ok
+                    StatusCode = Domain.Enum.StatusCode.OK
                 };
             }
             catch   (Exception e) 
             {
                 _logger.LogError(e, $"[Register]: {e.Message}");
                 return new BaseResponse<ClaimsIdentity>
+                {
+                    Description = e.Message,
+                    StatusCode = Domain.Enum.StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public BaseResponse<User> Save(User user)
+        {
+            try
+            {
+                var a = _userRepository.Get();
+                var userToChange = a.FirstOrDefault(u => u.Id == user.Id);
+
+                userToChange.Profession = user.Profession;
+                userToChange.City = user.City;
+                userToChange.Country= user.Country;
+                userToChange.Description = user.Description;
+                userToChange.Image=user.Image;
+                
+                _userRepository.Update(userToChange);
+
+                return new BaseResponse<User>()
+                {
+                    Data = userToChange,
+                    Description = "Данные обновлены",
+                    StatusCode = StatusCode.OK
+                };
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"[Save]: {e.Message}");
+                return new BaseResponse<User>
                 {
                     Description = e.Message,
                     StatusCode = Domain.Enum.StatusCode.InternalServerError

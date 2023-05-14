@@ -1,4 +1,5 @@
-﻿using DigitalPortfolio.Domain.Response;
+﻿using DigitalPortfolio.Domain.Entity;
+using DigitalPortfolio.Domain.Response;
 using DigitalPortfolio.Domain.ViewModel.User;
 using System;
 using System.Collections.Generic;
@@ -11,8 +12,10 @@ namespace DigitalPortfolio.Service.Interfaces
 {
 	public interface IAccountService
     {
-		public Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model);
-
+        BaseResponse<User> Save(User user);
+        public Task<BaseResponse<User>> GetByEmail(string email);
+        public Task<BaseResponse<User>> GetById(int id);
+        public Task<BaseResponse<ClaimsIdentity>> Register(RegisterViewModel model);
 		public Task<BaseResponse<ClaimsIdentity>> Login(LoginViewModel model);
     }
 }

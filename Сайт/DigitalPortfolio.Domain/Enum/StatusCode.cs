@@ -2,7 +2,7 @@
 {
 	public enum StatusCode
 	{
-		Ok = 200,
+		OK = 200,
 		UserNotFound = 401,
 		InternalServerError = 500,
 	}

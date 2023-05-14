@@ -1,0 +1,53 @@
+﻿@model DigitalPortfolio.Domain.ViewModel.ProjectViewModel;
+
+<header>
+    <img src="~/logo1.png" style="margin-top: 6px">
+    <nav>
+        <a href="/" style="margin-left: 40px">Главная</a>
+        <a href="/Project/Add">Добавить проект</a>
+        <button class="searchButton">Поиск...</button>
+        @if (!User.Identity.IsAuthenticated)
+        {
+            <form action="/Account/Login">
+                <button class="loginButton">Вход</button>
+            </form>
+            <form action="/Account/Register">
+                <button class="signupButton">Регистрация</button>
+            </form>
+        }
+        else
+        {
+            <a href="/Account" style="margin-left: 200px">Мой профиль</a>
+            <form method="post" asp-controller="Account" asp-action="Logout">
+                <input class="fakeClass signupButton" type="submit" value="Выход" />
+            </form>
+        }
+    </nav>
+</header>
+
+
+
+<body>
+    <div>
+        <form enctype="multipart/form-data" asp-controller="Project" asp-action="Add">
+            <div asp-validation-summary="All"></div>
+            <div>
+                <label>Обложка проекта</label>
+                <input asp-for="Image" type="file">
+            </div>
+            <div>
+                <input asp-for="Images" type="file" multiple>
+                <label>Загрузите изображения вашего проекта</label>
+            </div>
+            <div>
+                <label>Название проекта</label>
+                <input asp-for="Name" placeholder="Придумайте название..." type="text" />
+            </div>
+            <div>
+                <label>Описание проекта</label>
+                <input asp-for="Description" placeholder="Опишите проект. Хорошее название привлекает внимание..." type="text" />
+            </div>
+            <button type="submit">Добавить проект</button>
+        </form>
+    </div>
+</body>
