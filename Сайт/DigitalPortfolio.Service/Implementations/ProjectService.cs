@@ -41,6 +41,7 @@ namespace DigitalPortfolio.Service.Implementations
                     Image = avatar,
                     Images = images,
                     Name = vm.Name,
+                    GraphicalDesign = true
                 };
 
                 _projectRepository.Add1(result);

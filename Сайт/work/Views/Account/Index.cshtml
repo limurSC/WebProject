@@ -25,37 +25,63 @@
     </nav>
 </header>
 <main>
+    <label style="margin-left:880px; font-size:20px; font-weight:700;">Мой профиль</label>
     <div>
         <form enctype="multipart/form-data" asp-controller="Account" asp-action="Index">
             <div>
                 <input asp-for="Id" value="@Model.Id" hidden="hidden" />
             </div>
-            <div>
-                <input asp-for="Name" value="@Model.Name?.Trim()" placeholder="Имя" type="text" />
+            <div style="float:left; margin-left:400px;">
+                @if (Model.Image != null)
+                {
+                    <img src="~/avatars/@Model.Image" class="rounded-circle" width="200px" height="200px" />
+                }
+                else
+                {
+                    <img src="~/NoImage.png" class="rounded-circle" width="200px" height="200px" />
+                }
+                <label class="loadImageButton" for="imageLoad">Загрузите фото</label>
+                <input id="imageLoad" style="display:none" asp-for="Secret" type="file">
             </div>
-            <div>
-                <input asp-for="Surname" value="@Model.Surname?.Trim()" placeholder="Фамилия" type="text" />
+            <div style="float:right">
+                <label>ОСНОВНАЯ ИНФОРМАЦИЯ</label>
+                <div class="basicInformation">
+                    <div style="float:left; padding:10px;">
+                        <label>Имя</label>
+                        <input class="halvedSize" asp-for="Name" value="@Model.Name?.Trim()" type="text" />
+                    </div>
+                    <div style="float:right; padding:10px;">
+                        <label>Фамилия</label>
+                        <input class="halvedSize" asp-for="Surname" value="@Model.Surname?.Trim()" type="text" />
+                    </div>
+                    <div style="float:left; padding:10px;">
+                        <label>Профессия</label>
+                        <input class="fullSize" asp-for="Profession" value="@Model.Profession?.Trim()" placeholder="Пример: UX/UI дизайнер" type="text" />
+                    </div>
+                    <div style="float:left; padding:10px;">
+                        <label>Страна</label>
+                        <input class="halvedSize" asp-for="Country" value="@Model.Country?.Trim()" type="text" />
+                    </div>
+                    <div style="float:right; padding:10px;">
+                        <label>Город</label>
+                        <input class="halvedSize" asp-for="City" value="@Model.City?.Trim()" type="text" />
+                    </div>
+                </div>
+                <label>ОБО МНЕ</label>
+                <div class="description">
+                    <label style="margin-top:0px;">Описание</label>
+                    <textarea class="fullSize" style="height:180px;" asp-for=" Description">@Model.Description?.Trim()</textarea>
+                </div>
+                <div>
+                <button class="saveButton" type="submit">Сохранить</button>
+                </div>
             </div>
-            <div>
-                <input asp-for="Profession" value="@Model.Profession?.Trim()" placeholder="Профессия" type="text" />
-            </div>
-            <div>
-                <input asp-for="Country" value="@Model.Country?.Trim()" placeholder="Страна" type="text" />
-            </div>
-            <div>
-                <input asp-for="City" value="@Model.City?.Trim()" placeholder="Город" type="text" />
-            </div>
-            <div>
-                <input asp-for="Description" value="@Model.Description?.Trim()" placeholder="Описание" type="text" />
-            </div>
-            @if (Model.Image != null)
-            {
-                <img src="~/avatars/@Model.Image" class="rounded-circle" width="200px" height="200px" />
-            }
-            <div>
-                <input asp-for="Secret" type="file">
-            </div>
-            <button type="submit" style="margin-top:20px;">Сохранить</button>
         </form>
+        @*<div>
+            <label>МОИ ПРОЕКТЫ</label>
+        </div>
+        <div>
+            <label>МОЯ СТАТИСТИКА</label>
+        </div>*@
     </div>
 </main>

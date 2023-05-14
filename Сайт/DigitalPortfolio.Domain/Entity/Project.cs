@@ -17,5 +17,6 @@ namespace DigitalPortfolio.Domain.Entity
         public int AuthorId { get; set; }
         public string Images { get; set; }
         public string Image { get; set; }
+        public bool GraphicalDesign { get; set; }
     }
 }

@@ -146,7 +146,9 @@ namespace DigitalPortfolio.Service.Implementations
                 userToChange.City = user.City;
                 userToChange.Country= user.Country;
                 userToChange.Description = user.Description;
-                userToChange.Image=user.Image;
+                if(user.Image!=null)
+                    userToChange.Image=user.Image;
+
                 
                 _userRepository.Update(userToChange);
 
@@ -173,7 +175,6 @@ namespace DigitalPortfolio.Service.Implementations
             var claims = new List<Claim>
             {
                 new Claim(ClaimsIdentity.DefaultNameClaimType, user.Email),
-                //new Claim(ClaimsIdentity.DefaultRoleClaimType, user.Role.ToString())
             };
             return new ClaimsIdentity(claims,"ApplicationCookie",
                 ClaimsIdentity.DefaultNameClaimType, ClaimsIdentity.DefaultRoleClaimType);

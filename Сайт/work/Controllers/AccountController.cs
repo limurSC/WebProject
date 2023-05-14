@@ -6,6 +6,8 @@ using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.AspNetCore.Authorization;
+
 namespace DigitalPortfolio.Controllers
 {
 	public class AccountController : Controller
@@ -20,7 +22,10 @@ namespace DigitalPortfolio.Controllers
 		}
 
 		[HttpGet]
-		public IActionResult Register() => View();
+		public IActionResult Register()
+		{
+			return View();
+		}
 
         [HttpPost]
 		public async Task<IActionResult> Register(RegisterViewModel model)
@@ -69,7 +74,7 @@ namespace DigitalPortfolio.Controllers
 		}
 
 		[HttpGet]
-		public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index()
 		{
             var email = User.Identity.Name;
             var response = await _accountServise.GetByEmail(email);
@@ -82,11 +87,11 @@ namespace DigitalPortfolio.Controllers
 
 
 		[HttpPost]
-		public async Task<IActionResult> Index(User user)
+        public IActionResult Index(User user)
 		{
 			if(user.Secret!=null)
 				user.Image = SaveImage(user.Secret);
-            _accountServise.Save(user);
+            user = _accountServise.Save(user).Data;
 			return View(user);
         }
         private string SaveImage(IFormFile file)

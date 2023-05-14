@@ -5,25 +5,29 @@
 }
 
 <body class="RegisterImage">
-    <div>
+    <div style="margin-left:400px; margin-top:400px;" class="logo2">
+        <img src="~/logo2.png" />
+    </div>
+    <div class="background">
+        <label style="margin-left:210px; margin-top:80px;">Регистрация</label>
         <form asp-controller="Account" asp-action="Register">
             <div asp-validation-summary="All"></div>
             <div>
-                <input asp-for="Name" placeholder="Имя" type="text" />
+                <input class="box" asp-for="Name" placeholder="Имя" type="text" />
             </div>
             <div>
-                <input asp-for="Surname" placeholder="Фамилия" type="text" />
+                <input class="box" asp-for="Surname" placeholder="Фамилия" type="text" />
             </div>
             <div>
-                <input asp-for="Email" placeholder="Почта" type="text" />
+                <input class="box" asp-for="Email" placeholder="Почта" type="text" />
             </div>
             <div>
-                <input autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
+                <input class="box" autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
             </div>
             <div>
-                <input autocomplete="new-password" asp-for="PasswordConfirmation" placeholder="Подтверждение пароля" type="text" />
+                <input class="box" autocomplete="new-password" asp-for="PasswordConfirmation" placeholder="Подтверждение пароля" type="text" />
             </div>
-            <button type="submit">Зарегестрироваться</button>
+            <button class="button" type="submit">Зарегестрироваться</button>
         </form>
     </div>
 </body>

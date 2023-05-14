@@ -5,16 +5,20 @@
 }
 
 <body class="LoginImage">
-    <div>
-        <form asp-controller="Account" asp-action="Login">
+    <div style="margin-left:400px; margin-top:400px;" class="logo2">
+        <img src="~/logo2.png" />
+    </div>
+    <div class="background">
+        <label style="margin-left:230px; margin-top:130px;">Вход</label>
+        <form style="align-content:center;" asp-controller="Account" asp-action="Login">
             <div asp-validation-summary="All"></div>
             <div>
-                <input asp-for="Email" placeholder="Почта" type="text" />
+                <input class="box" asp-for="Email" placeholder="Почта" type="text" />
             </div>
             <div>
-                <input autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
+                <input class="box" autocomplete="new-password" asp-for="Password" placeholder="пароль" type="text" />
             </div>
-            <button type="submit">Войти</button>
+            <button class="button" type="submit">Войти</button>
         </form>
     </div>
 </body>

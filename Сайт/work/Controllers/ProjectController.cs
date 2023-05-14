@@ -33,11 +33,14 @@ namespace DigitalPortfolio.Controllers
         }
 
         [HttpGet]
-        [Authorize]
-        public IActionResult Add() => View();
+        [Authorize(AuthenticationSchemes = "Cookies")]
+        public IActionResult Add()
+        {
+            return View();
+        }
 
         [HttpPost]
-        [Authorize]
+        [Authorize(AuthenticationSchemes = "Cookies")]
         public async Task<IActionResult> Add(ProjectViewModel vm)
         {
             if (ModelState.IsValid)
