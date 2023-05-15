@@ -31,7 +31,7 @@
         <div style="margin-top:50px; text-align:center;">
             @if (Model.Image != null)
             {
-                <img src="~/avatars/@Model.Image" height="100px" width="100px" />
+                <img src="~/avatars/@Model.Image" class="rounded-circle"  height="100px" width="100px" />
             }
             else
             {
@@ -39,18 +39,18 @@
             }
             <label>@name</label>
         </div>
-        <img src="~/projectAvatars/@Model.Project.Image" width="960px" height="680" style="margin-left:480px; margin-top:50px; margin-bottom:25px" />
+        <img src="~/projectAvatars/@Model.Project.Image" width="960px" height="680" style="border:1px solid #000; margin-left:480px; margin-top:50px; margin-bottom:25px" />
         @{
             var images = Directory.GetFiles("wwwroot" + "\\" + Model.Project.Images);
             <div style="display:inline-block;">
                 @foreach (var image in images)
                 {
-                    <img style="margin-left:150px; margin-top:25px; margin-bottom:25px;" width="440px" height="220px" src="~/@image.Substring(8)" />
+                    <img style="border:1px solid #000; margin-left:150px; margin-top:25px; margin-bottom:25px;" width="440px" height="220px" src="~/@image.Substring(8)" />
                 }
             </div>
         }
         <div style="text-align:center">
-            <textarea disabled="disabled" cols="120" rows="20" style="resize:none; background-color:white; border:none;">@Model.Project.Description.Trim()</textarea>
+            <textarea disabled="disabled" cols="120" rows="20" style="text-align:center; resize:none; background-color:white; border:none;">@Model.Project.Description.Trim()</textarea>
         </div>
     </div>
 }

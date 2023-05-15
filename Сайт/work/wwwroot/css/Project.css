@@ -1,0 +1,22 @@
+﻿.threeSidedBorder {
+    border-left: 1px solid #808080;
+    border-right: 1px solid #808080;
+    border-bottom: 1px solid #808080;
+    border-radius: 12px;
+    box-shadow: 0px 3px 7px 1px grey;
+    padding:10px;
+}
+
+.newButton {
+    border: none;
+    border-radius: 12px;
+    background-color: blueviolet;
+    color:white;
+}
+
+.violetBorder{
+    border:1px solid;
+    border-color:blueviolet;
+    border-radius:12px;
+    padding:10px;
+}

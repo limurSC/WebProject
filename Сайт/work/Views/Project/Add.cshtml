@@ -31,66 +31,80 @@
     <div>
         <form enctype="multipart/form-data" asp-controller="Project" asp-action="Add">
             <div asp-validation-summary="All"></div>
-            <div>
-                <label>Обложка проекта</label>
-                <input asp-for="Image" type="file">
+            <div class="threeSidedBorder" style="float:left; margin-left:300px; width:750px; height:900px;">
+                <input id="monkaS" style="display:none" asp-for="Images" type="file" multiple>
+                <label for="monkaS" class="newButton" style="width:200px; height:60px; text-align:center; font-size:40px; margin-left:275px; margin-top:300px;">Загрузить</label>
+                <label style="margin-left:180px; font-size:20px">Загрузите изображения для вашего проекта</label>
             </div>
-            <div>
-                <input asp-for="Images" type="file" multiple>
-                <label>Загрузите изображения вашего проекта</label>
+            <div class="threeSidedBorder" style="float:right; margin-right:300px; width:500px; height:350px;">
+                <label style="margin-top:0px; margin-bottom:10px; font-size:20px; font-weight:700;">Обложка проекта</label>
+                <div style="border: 1px solid #000; height:280px;">
+                    <input id="pepega" style="display:none" asp-for="Image" type="file">
+                    <label for="pepega" class="newButton" style="width:250px; height:30px; margin-left:115px; margin-top:125px; text-align:center">Загрузить изображение</label>
+                </div>
             </div>
-            <div>
-                <label>Название проекта</label>
-                <input asp-for="Name" placeholder="Придумайте название..." type="text" />
+            <div class="threeSidedBorder" style="float:right; margin-right:300px; width:500px; height:510px; margin-top:40px;">
+                <div>
+                    <label>Название проекта</label>
+                    <div class="violetBorder" style="height:50px;">
+                        <input asp-for="Name" style="border:none; outline:none; margin-top:0px;" placeholder="Придумайте название..." type="text" />
+                    </div>
+                </div>
+                <div>
+                    <label>Описание проекта</label>
+                    <div class="violetBorder" style="height:200px;">
+                        <textarea asp-for="Description" rows="7" cols="59" style="overflow:hidden; resize:none; border:none; outline:none;" placeholder="Опишите проект. Хорошее название привлекает внимание..." type="text"></textarea>
+                    </div>
+                </div>
+                <div>
+                    <label>Как бы вы классифицировали этот проект?</label>
+                    <div style="display:grid; float:left; width:200px;">
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="GraphicalDesign" asp-for="GraphicalDesign" name="Графич. дизайн" type="checkbox" />
+                            <label style=" margin:0px;" for="GraphicalDesign">Графический дизайн</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="ProductDesign" asp-for="ProductDesign" type="checkbox" />
+                            <label style=" margin:0px;" for="ProductDesign">Дизайн продуктов</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="InteractiveDesign" asp-for="InteractiveDesign" type="checkbox" />
+                            <label style=" margin:0px;" for="InteractiveDesign">Интерактивный дизайн</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="ClothDesign" asp-for="ClothDesign" type="checkbox" />
+                            <label style="margin:0px;" for="ClothDesign">Дизайн одежды</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="WebDesign" asp-for="WebDesign" type="checkbox" />
+                            <label style="margin:0px;" for="WebDesign">Веб-дизайн</label>
+                        </div>
+                    </div>
+                    <div style="display:grid; float:right; width:220px;">
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="Photo" asp-for="Photo" type="checkbox" />
+                            <label style="margin:0px;" for="Photo">Фотография</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="Art" asp-for="Art" type="checkbox" />
+                            <label style="margin:0px;" for="Art">Изобразительное искусство</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="Illustration" asp-for="Illustration" type="checkbox" />
+                            <label style="margin:0px;" for="Illustration">Иллюсттрация</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="AdPhoto" asp-for="AdPhoto" type="checkbox" />
+                            <label style="margin:0px;" for="AdPhoto">Рекламная фотография</label>
+                        </div>
+                        <div>
+                            <input style="float:left; margin-top:5px;" id="DigitalArt" asp-for="DigitalArt" type="checkbox" />
+                            <label style="margin:0px;" for="DigitalArt">Цифровое искусство</label>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <label>Описание проекта</label>
-                <input asp-for="Description" placeholder="Опишите проект. Хорошее название привлекает внимание..." type="text" />
-            </div>
-            <div>
-                <label>Как бы вы классифицировали этот проект?</label>
-                <div style="display:inline">
-                    <input id="GraphicalDesign" asp-for="GraphicalDesign" name="Графич. дизайн" type="checkbox" />
-                    <label for="GraphicalDesign">Графич. дизайн</label>
-                </div>
-                <div>
-                    <input id="ProductDesign" asp-for="ProductDesign" type="checkbox" />
-                    <label for="ProductDesign">Дизайн продуктов</label>
-                </div>
-                <div>
-                    <input id="InteractiveDesign" asp-for="InteractiveDesign" type="checkbox" />
-                    <label for="InteractiveDesign"></label>
-                </div>
-                <div>
-                    <input id="ClothDesign" asp-for="ClothDesign" type="checkbox" />
-                    <label for="ClothDesign"></label>
-                </div>
-                <div>
-                    <input id="WebDesign" asp-for="WebDesign" type="checkbox" />
-                    <label for="WebDesign"></label>
-                </div>
-                <div>
-                    <input id="Photo" asp-for="Photo" type="checkbox" />
-                    <label for="Photo"></label>
-                </div>
-                <div>
-                    <input id="Art" asp-for="Art" type="checkbox" />
-                    <label for="Art"></label>
-                </div>
-                <div>
-                    <input id="Illustration" asp-for="Illustration" type="checkbox" />
-                    <label for="Illustration"></label>
-                </div>
-                <div>
-                    <input id="AdPhoto" asp-for="AdPhoto" type="checkbox" />
-                    <label for="AdPhoto"></label>
-                </div>
-                <div>
-                    <input id="DigitalArt" asp-for="DigitalArt" type="checkbox" />
-                    <label for="DigitalArt"></label>
-                </div>
-                <button type="submit">Добавить проект</button>
-            </div>
+            <button class="newButton" style="margin-left:1450px; margin-top:20px; width:150px; height:50px;" type="submit">Добавить проект</button>
         </form>
     </div>
 </body>

@@ -59,7 +59,7 @@ else if ( Model!=null && Model.Count > 0)
     {
             <div class="projects">
             <a asp-controller="Project" asp-action="Index" asp-route-projectId=@project.Id>
-                <img width="320px" height="180px" src="~/projectAvatars/@project.Image" />
+                <img style="border:1px solid #000" width="320px" height="180px" src="~/projectAvatars/@project.Image" />
             </a>
             <label style="text-align:center;">@project.Name</label>
         </div>
