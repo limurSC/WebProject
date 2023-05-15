@@ -41,7 +41,8 @@
                     <img src="~/NoImage.png" class="rounded-circle" width="200px" height="200px" />
                 }
                 <label class="loadImageButton" for="imageLoad">Загрузите фото</label>
-                <input id="imageLoad" style="display:none" asp-for="Secret" type="file">
+                <input id="imageLoad" style="display:none" asp-for="Secret" type="file" accept="image/*" onchange="homeAvatarScript(event)">
+                <img id="homeAvatar" style="position: absolute; top:125px; left:400px; width:202px; height:202px;" class="rounded-circle" />
             </div>
             <div style="float:right">
                 <label>ОСНОВНАЯ ИНФОРМАЦИЯ</label>
@@ -85,3 +86,14 @@
         </div>*@
     </div>
 </main>
+
+
+<script>
+    var homeAvatarScript = function (event) {
+        var homeAvatar = document.getElementById('homeAvatar');
+        homeAvatar.src = URL.createObjectURL(event.target.files[0]);
+        homeAvatar.onload = function () {
+            URL.revokeObjectURL(homeAvatar.src) // free memory
+        }
+    };
+</script>

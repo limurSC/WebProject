@@ -32,14 +32,17 @@
         <form enctype="multipart/form-data" asp-controller="Project" asp-action="Add">
             <div asp-validation-summary="All"></div>
             <div class="threeSidedBorder" style="float:left; margin-left:300px; width:750px; height:900px;">
-                <input id="monkaS" style="display:none" asp-for="Images" type="file" multiple>
-                <label for="monkaS" class="newButton" style="width:200px; height:60px; text-align:center; font-size:40px; margin-left:275px; margin-top:300px;">Загрузить</label>
+                <input id="monkaS" style="display:none" asp-for="Images" onchange="preview()" type="file" multiple>
+                <label for="monkaS" class="newButton" style="width:200px; height:60px; text-align:center; font-size:40px; margin-left:275px;">Загрузить</label>
                 <label style="margin-left:180px; font-size:20px">Загрузите изображения для вашего проекта</label>
+                <p style="margin-left:300px;" id="num-of-files">Файлы не выбраны</p>
+                <div id="hzulka"></div>
             </div>
             <div class="threeSidedBorder" style="float:right; margin-right:300px; width:500px; height:350px;">
                 <label style="margin-top:0px; margin-bottom:10px; font-size:20px; font-weight:700;">Обложка проекта</label>
                 <div style="border: 1px solid #000; height:280px;">
-                    <input id="pepega" style="display:none" asp-for="Image" type="file">
+                    <input id="pepega" style="display:none" asp-for="Image" type="file" accept="image/*" onchange="projectAvatarScript(event)">
+                    <img id="projectAvatar" style="height:279px; width:476px; position:absolute; top:125; left:1120; pointer-events:none" />
                     <label for="pepega" class="newButton" style="width:250px; height:30px; margin-left:115px; margin-top:125px; text-align:center">Загрузить изображение</label>
                 </div>
             </div>
@@ -108,3 +111,37 @@
         </form>
     </div>
 </body>
+
+<script>
+    var projectAvatarScript = function (event) {
+        var projectAvatar = document.getElementById('projectAvatar');
+        projectAvatar.src = URL.createObjectURL(event.target.files[0]);
+        projectAvatar.onload = function () {
+            URL.revokeObjectURL(projectAvatar.src) // free memory
+        }
+    };
+</script>
+<script>
+    let fileInput = document.getElementById("monkaS");
+    let imageContainer = document.getElementById("hzulka");
+    let numOfFiles = document.getElementById("num-of-files");
+
+    function preview() {
+        imageContainer.innerHTML = "";
+        numOfFiles.textContent = `Файлов выбрано: ${fileInput.files.length}`;
+
+        for (i of fileInput.files) {
+            let reader = new FileReader();
+            let figure = document.createElement("figure");
+            let figCap = document.createElement("figcaption");
+            figure.appendChild(figCap);
+            reader.onload = () => {
+                let img = document.createElement("img");
+                img.setAttribute("src", reader.result);
+                figure.insertBefore(img, figCap);
+            }
+            imageContainer.appendChild(figure);
+            reader.readAsDataURL(i);
+        }
+    }
+</script>

@@ -20,3 +20,20 @@
     border-radius:12px;
     padding:10px;
 }
+
+#preview img {
+    max-height: 200px;
+}
+
+
+#hzulka img {
+    width: 232px;
+}
+
+#hzulka {
+    position: relative;
+    margin: auto;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
