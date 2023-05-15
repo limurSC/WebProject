@@ -18,5 +18,14 @@ namespace DigitalPortfolio.Domain.Entity
         public string Images { get; set; }
         public string Image { get; set; }
         public bool GraphicalDesign { get; set; }
+        public bool ProductDesign { get; set; }
+        public bool InteractiveDesign { get; set; }
+        public bool ClothDesign { get; set; }
+        public bool WebDesign { get; set; }
+        public bool Photo { get; set; }
+        public bool Art { get; set; }
+        public bool Illustration { get; set; }
+        public bool AdPhoto { get; set; }
+        public bool DigitalArt { get; set; }
     }
 }

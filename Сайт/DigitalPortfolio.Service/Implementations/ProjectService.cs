@@ -41,7 +41,16 @@ namespace DigitalPortfolio.Service.Implementations
                     Image = avatar,
                     Images = images,
                     Name = vm.Name,
-                    GraphicalDesign = true
+                    GraphicalDesign = vm.GraphicalDesign,
+                    ProductDesign = vm.ProductDesign,
+                    InteractiveDesign = vm.InteractiveDesign,
+                    ClothDesign = vm.ClothDesign,
+                    WebDesign = vm.WebDesign,
+                    Photo = vm.Photo,
+                    Art = vm.Art,
+                    Illustration = vm.Illustration,
+                    AdPhoto = vm.AdPhoto,
+                    DigitalArt = vm.DigitalArt,
                 };
 
                 _projectRepository.Add1(result);

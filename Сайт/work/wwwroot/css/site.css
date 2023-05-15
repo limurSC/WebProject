@@ -122,6 +122,7 @@ main input{
 
 .projects {
     display: inline-block;
-    margin-left: 128px;
+    margin-left: 64px;
+    margin-right: 64px;
     margin-top: 100px;
 }

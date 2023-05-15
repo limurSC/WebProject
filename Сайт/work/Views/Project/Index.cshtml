@@ -28,16 +28,29 @@
 @{
     var name = Model.Name + " " + Model.Surname;
     <div>
-        <img src="~/avatars/@Model.Image" />
-        <label>@name</label>
-        <img src="~/projectAvatars/@Model.Project.Image" />
+        <div style="margin-top:50px; text-align:center;">
+            @if (Model.Image != null)
+            {
+                <img src="~/avatars/@Model.Image" height="100px" width="100px" />
+            }
+            else
+            {
+                <img src="~/NoImage.png" height="100px" width="100px" />
+            }
+            <label>@name</label>
+        </div>
+        <img src="~/projectAvatars/@Model.Project.Image" width="960px" height="680" style="margin-left:480px; margin-top:50px; margin-bottom:25px" />
         @{
             var images = Directory.GetFiles("wwwroot" + "\\" + Model.Project.Images);
-            foreach (var image in images)
-            {
-                    <img width="100px" height="70px" src="~/@image.Substring(8)" />
-            }
+            <div style="display:inline-block;">
+                @foreach (var image in images)
+                {
+                    <img style="margin-left:150px; margin-top:25px; margin-bottom:25px;" width="440px" height="220px" src="~/@image.Substring(8)" />
+                }
+            </div>
         }
-        <label>@Model.Project.Description</label>
+        <div style="text-align:center">
+            <textarea disabled="disabled" cols="120" rows="20" style="resize:none; background-color:white; border:none;">@Model.Project.Description.Trim()</textarea>
+        </div>
     </div>
 }

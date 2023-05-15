@@ -47,7 +47,50 @@
                 <label>Описание проекта</label>
                 <input asp-for="Description" placeholder="Опишите проект. Хорошее название привлекает внимание..." type="text" />
             </div>
-            <button type="submit">Добавить проект</button>
+            <div>
+                <label>Как бы вы классифицировали этот проект?</label>
+                <div style="display:inline">
+                    <input id="GraphicalDesign" asp-for="GraphicalDesign" name="Графич. дизайн" type="checkbox" />
+                    <label for="GraphicalDesign">Графич. дизайн</label>
+                </div>
+                <div>
+                    <input id="ProductDesign" asp-for="ProductDesign" type="checkbox" />
+                    <label for="ProductDesign">Дизайн продуктов</label>
+                </div>
+                <div>
+                    <input id="InteractiveDesign" asp-for="InteractiveDesign" type="checkbox" />
+                    <label for="InteractiveDesign"></label>
+                </div>
+                <div>
+                    <input id="ClothDesign" asp-for="ClothDesign" type="checkbox" />
+                    <label for="ClothDesign"></label>
+                </div>
+                <div>
+                    <input id="WebDesign" asp-for="WebDesign" type="checkbox" />
+                    <label for="WebDesign"></label>
+                </div>
+                <div>
+                    <input id="Photo" asp-for="Photo" type="checkbox" />
+                    <label for="Photo"></label>
+                </div>
+                <div>
+                    <input id="Art" asp-for="Art" type="checkbox" />
+                    <label for="Art"></label>
+                </div>
+                <div>
+                    <input id="Illustration" asp-for="Illustration" type="checkbox" />
+                    <label for="Illustration"></label>
+                </div>
+                <div>
+                    <input id="AdPhoto" asp-for="AdPhoto" type="checkbox" />
+                    <label for="AdPhoto"></label>
+                </div>
+                <div>
+                    <input id="DigitalArt" asp-for="DigitalArt" type="checkbox" />
+                    <label for="DigitalArt"></label>
+                </div>
+                <button type="submit">Добавить проект</button>
+            </div>
         </form>
     </div>
 </body>
