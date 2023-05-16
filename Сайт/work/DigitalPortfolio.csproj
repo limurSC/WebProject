@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <Folder Include="wwwroot\avatars\" />
-    <Folder Include="wwwroot\projectAvatar\" />
+    <Folder Include="wwwroot\projectAvatars\" />
   </ItemGroup>
 
 </Project>
