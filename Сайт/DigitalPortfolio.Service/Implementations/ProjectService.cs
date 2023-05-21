@@ -21,7 +21,7 @@ namespace DigitalPortfolio.Service.Implementations
         private readonly IUserRepository<User> _userRepository;
         private readonly ILogger<AccountService> _logger;
 
-        public ProjectService(IUserRepository<User> userRepository, 
+        public ProjectService(IUserRepository<User> userRepository,
             IProjectRepository projectRepository, ILogger<AccountService> logger)
         {
             _logger = logger;
@@ -65,6 +65,46 @@ namespace DigitalPortfolio.Service.Implementations
             {
                 _logger.LogError(e, $"[Add]: {e.Message}");
                 return new BaseResponse<Project>
+                {
+                    Description = e.Message,
+                    StatusCode = Domain.Enum.StatusCode.InternalServerError
+                };
+            }
+        }
+
+        public async Task<BaseResponse<List<Project>>> GetBySearchQuery(string graphicalDesign, string productDesign,
+            string interactiveDesign, string clothDesign, string webDesign, string photo,
+            string art, string illustration, string adPhoto, string digitalArt, string searchText)
+        {
+            try
+            {
+                var result = new List<Project>();
+                var all = _projectRepository.GetAll();
+                foreach (var p in all)
+                {
+                    var a = searchText == null || p.Name.Trim().StartsWith(searchText.Trim(), StringComparison.InvariantCultureIgnoreCase);
+                    var b = graphicalDesign == null || p.GraphicalDesign;
+                    var c = productDesign == null || p.ProductDesign;
+                    var d = interactiveDesign == null || p.InteractiveDesign;
+                    var e = clothDesign == null || p.ClothDesign;
+                    var f = webDesign == null || p.WebDesign;
+                    var g = photo == null || p.Photo;
+                    var h = art == null || p.Art;
+                    var i = illustration == null || p.Illustration;
+                    var j = adPhoto == null || p.AdPhoto;
+                    var k = digitalArt == null || p.DigitalArt;
+                    if (a && b && c && d && e && f && g && h && i && j && k)
+                        result.Add(p);
+                }
+                return new BaseResponse<List<Project>>
+                {
+                    Data = result
+                };
+            }
+            catch (Exception e)
+            {
+                _logger.LogError(e, $"[GetBySearchQuery]: {e.Message}");
+                return new BaseResponse<List<Project>>
                 {
                     Description = e.Message,
                     StatusCode = Domain.Enum.StatusCode.InternalServerError

@@ -17,8 +17,11 @@ namespace work.Controllers
 
         public IActionResult Index()
         {
-            if(User.Identity.Name!=null)
-                return View(_projectService.GetByEmail(User.Identity.Name).Data);
+            if (User.Identity.Name != null)
+            {
+                var a = _projectService.GetByEmail(User.Identity.Name).Data;
+                return View(a);
+            }
             return View();
         }
 

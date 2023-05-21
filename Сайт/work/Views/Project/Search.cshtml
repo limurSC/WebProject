@@ -1,0 +1,31 @@
+﻿@{
+    ViewData["Title"] = "Поиск";
+    Layout = "_Layout";
+}
+
+@model List<DigitalPortfolio.Domain.Entity.Project>;
+
+@if (Model.Count > 0)
+{
+    <div style="text-align:center;">
+        <label>Проектов по вашему запросу найдено: @Model.Count</label>
+        @foreach(var project in Model)
+        {
+            <div class="searchResult">
+                <div style="text-align:left; width:500px;">
+                    <label>@("Название роекта: " + project.Name)</label>
+                    <label>@("Автор проекта: " + project.Author.Name + " " + project.Author.Surname)</label>
+                </div>
+                <a asp-controller="Project" asp-action="Index" asp-route-projectId=project.Id>
+                    <img style="border:1px solid #000" width="320px" height="180px" src="~/projectAvatars/@project.Image" />
+                </a>
+            </div>
+        }
+    </div>
+}
+else
+{
+    <div style="text-align:center;">
+        <label>По вашему запросу ничего не найдено</label>
+    </div>
+}

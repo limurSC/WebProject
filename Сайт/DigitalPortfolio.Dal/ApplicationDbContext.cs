@@ -19,6 +19,10 @@ namespace Automarket.DAL
                 builder.Ignore("Secret");
                 builder.Ignore("Project");
             });
+            modelBuilder.Entity<Project>(builder =>
+            {
+                builder.Ignore("Author");
+            });
         }
     }
 }

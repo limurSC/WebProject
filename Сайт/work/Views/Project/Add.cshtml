@@ -1,32 +1,9 @@
 ﻿@model DigitalPortfolio.Domain.ViewModel.ProjectViewModel;
 
-<header>
-    <img src="~/logo1.png" style="margin-top: 6px">
-    <nav>
-        <a href="/" style="margin-left: 40px">Главная</a>
-        <a href="/Project/Add">Добавить проект</a>
-        <button class="searchButton">Поиск...</button>
-        @if (!User.Identity.IsAuthenticated)
-        {
-            <form action="/Account/Login">
-                <button class="loginButton">Вход</button>
-            </form>
-            <form action="/Account/Register">
-                <button class="signupButton">Регистрация</button>
-            </form>
-        }
-        else
-        {
-            <a href="/Account" style="margin-left: 200px">Мой профиль</a>
-            <form method="post" asp-controller="Account" asp-action="Logout">
-                <input class="fakeClass signupButton" type="submit" value="Выход" />
-            </form>
-        }
-    </nav>
-</header>
-
-
-
+@{
+    ViewData["Title"] = "Добавление проекта";
+    Layout = "_Layout";
+}
 <body>
     <div>
         <form enctype="multipart/form-data" asp-controller="Project" asp-action="Add">

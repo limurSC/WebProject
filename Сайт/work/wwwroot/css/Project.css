@@ -37,3 +37,14 @@
     justify-content: space-evenly;
     flex-wrap: wrap;
 }
+
+.searchResult {
+    margin-left: 400px;
+    width: 1120px;
+    display:flex;
+    padding: 40px;
+    border-bottom:solid;
+    border-width:1px;
+    font-size:20px;
+    font-weight:600;
+}

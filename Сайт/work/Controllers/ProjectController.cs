@@ -14,7 +14,7 @@ namespace DigitalPortfolio.Controllers
         private readonly IAccountService _accountServise;
         private readonly IWebHostEnvironment _webHostEnvironment;
 
-        public ProjectController(IProjectService projectService, 
+        public ProjectController(IProjectService projectService,
             IWebHostEnvironment webHostEnvironment, IAccountService accountServise)
         {
             _accountServise = accountServise;
@@ -75,8 +75,8 @@ namespace DigitalPortfolio.Controllers
         {
             var uploadDir = Path.Combine(_webHostEnvironment.WebRootPath, ProjectName);
             Directory.CreateDirectory(uploadDir);
-            foreach(var file in files)
-            { 
+            foreach (var file in files)
+            {
                 var fileName = Guid.NewGuid().ToString() + "-" + file.FileName;
                 var filePath = Path.Combine(uploadDir, fileName);
                 using (var fileStram = new FileStream(filePath, FileMode.Create))
@@ -85,6 +85,28 @@ namespace DigitalPortfolio.Controllers
                 }
             }
             return ProjectName;
+        }
+
+        [HttpGet]
+        public IActionResult Search()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Search(string graphicalDesign, string productDesign,
+            string interactiveDesign, string clothDesign, string webDesign, string photo,
+            string art, string illustration, string adPhoto, string digitalArt, string searchText)
+        {
+            var projects = await _projectService.GetBySearchQuery(graphicalDesign, productDesign,
+             interactiveDesign, clothDesign, webDesign, photo,
+             art, illustration, adPhoto, digitalArt, searchText);
+            foreach(var project in projects.Data) 
+            {
+                var author = await _accountServise.GetById(project.AuthorId);
+                project.Author = author.Data;
+            }
+            return View(projects.Data);
         }
     }
 }

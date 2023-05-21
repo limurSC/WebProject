@@ -27,5 +27,6 @@ namespace DigitalPortfolio.Domain.Entity
         public bool Illustration { get; set; }
         public bool AdPhoto { get; set; }
         public bool DigitalArt { get; set; }
+        public User Author { get; set; }
     }
 }

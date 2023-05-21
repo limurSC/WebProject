@@ -126,3 +126,20 @@ main input{
     margin-right: 64px;
     margin-top: 100px;
 }
+
+.searchWindow{
+    width:460px;
+    position:absolute;
+    top:20px;
+    left:720px;
+    padding:5px;
+}
+
+.searchSubmit {
+    width: 100px;
+    margin-left: 120px;
+    margin-top: 10px;
+    height: 30px;
+    border-radius: 12px;
+    background-color: blueviolet;
+}

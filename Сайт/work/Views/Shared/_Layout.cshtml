@@ -11,10 +11,109 @@
     <link rel="stylesheet" href="~/css/Project.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/work.styles.css" asp-append-version="true" />
 </head>
-
 <body>
+    <header>
+        <img src="~/logo1.png" style="margin-top: 6px">
+        <nav>
+            <a href="/" style="margin-left: 40px">Главная</a>
+            <a href="/Project/Add">Добавить проект</a>
+            <button id="modalSearchOpen" class="searchButton">Поиск...</button>
+            <div id="modalSearch" class="modal">
+                <div class="modal-content searchWindow">
+                    <form asp-controller="Project" asp-action="Search" method="post">
+                        <input style="color:black; padding:5px; margin-left:120px" id="myModal" class="searchButton" name="searchText" type="text" />
+                        <div>
+                            <div style="display:grid; float:left; width:200px;">
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="GraphicalDesign" name="graphicalDesign" type="checkbox" />
+                                    <label style=" margin:0px;" for="GraphicalDesign">Графический дизайн</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="ProductDesign" name="productDesign" type="checkbox" />
+                                    <label style=" margin:0px;" for="ProductDesign">Дизайн продуктов</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="InteractiveDesign" name="interactiveDesign" type="checkbox" />
+                                    <label style=" margin:0px;" for="InteractiveDesign">Интерактивный дизайн</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="ClothDesign" name="clothDesign" type="checkbox" />
+                                    <label style="margin:0px;" for="ClothDesign">Дизайн одежды</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="WebDesign" name="webDesign" type="checkbox" />
+                                    <label style="margin:0px;" for="WebDesign">Веб-дизайн</label>
+                                </div>
+                            </div>
+                            <div style="display:grid; float:right; width:220px;">
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="Photo" name="photo" type="checkbox" />
+                                    <label style="margin:0px;" for="Photo">Фотография</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="Art" name="art" type="checkbox" />
+                                    <label style="margin:0px;" for="Art">Изобразительное искусство</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="Illustration" name="illustration" type="checkbox" />
+                                    <label style="margin:0px;" for="Illustration">Иллюсттрация</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="AdPhoto" name="adPhoto" type="checkbox" />
+                                    <label style="margin:0px;" for="AdPhoto">Рекламная фотография</label>
+                                </div>
+                                <div>
+                                    <input style="float:left; margin-top:5px;" id="DigitalArt" name="digitalArt" type="checkbox" />
+                                    <label style="margin:0px;" for="DigitalArt">Цифровое искусство</label>
+                                </div>
+                                <button class="searchSubmit" type="submit">Поиск</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <form action="/Account/Login">
+                    <button class="loginButton">Вход</button>
+                </form>
+                <form action="/Account/Register">
+                    <button class="signupButton">Регистрация</button>
+                </form>
+            }
+            else
+            {
+                <a href="/Account" style="margin-left: 200px">Мой профиль</a>
+                <form method="post" asp-controller="Account" asp-action="Logout">
+                    <input class="fakeClass signupButton" type="submit" value="Выход" />
+                </form>
+            }
+        </nav>
+    </header>
     <main>
         @RenderBody()
     </main>
 </body>
 </html>
+
+
+<script>
+    var modal = document.getElementById("modalSearch");
+
+    var btn = document.getElementById("modalSearchOpen");
+
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+<script>
+    document.getElementById("modalSearchOpen").addEventListener("click", () => {
+        document.getElementById("myModal").focus();
+    });
+</script>
