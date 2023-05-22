@@ -19,7 +19,8 @@ namespace work.Controllers
         {
             if (User.Identity.Name != null)
             {
-                var a = _projectService.GetByEmail(User.Identity.Name).Data;
+                //var a = _projectService.GetByEmail(User.Identity.Name).Data;
+                var a = _projectService.GetAll().Data;
                 return View(a);
             }
             return View();

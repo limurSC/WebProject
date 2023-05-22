@@ -12,5 +12,6 @@ namespace DigitalPortfolio.Service.Interfaces
             string interactiveDesign, string clothDesign, string webDesign, string photo,
             string art, string illustration, string adPhoto, string digitalArt, string searchText);
         public BaseResponse<Project> GetById(int id);
+        public BaseResponse<List<Project>> GetAll();
     }
 }

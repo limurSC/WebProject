@@ -148,5 +148,11 @@ namespace DigitalPortfolio.Service.Implementations
                 };
             }
         }
+
+        public BaseResponse<List<Project>> GetAll()
+        {
+            var projects = _projectRepository.GetAll().ToList();
+            return new BaseResponse<List<Project>> { Data = projects };
+        }
     }
 }

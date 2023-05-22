@@ -13,10 +13,10 @@
         {
             <div class="searchResult">
                 <div style="text-align:left; width:500px;">
-                    <label>@("Название роекта: " + project.Name)</label>
+                    <label>@("Название проекта: " + project.Name)</label>
                     <label>@("Автор проекта: " + project.Author.Name + " " + project.Author.Surname)</label>
                 </div>
-                <a asp-controller="Project" asp-action="Index" asp-route-projectId=project.Id>
+                <a asp-controller="Project" asp-action="Index" asp-route-projectId=@project.Id>
                     <img style="border:1px solid #000" width="320px" height="180px" src="~/projectAvatars/@project.Image" />
                 </a>
             </div>
